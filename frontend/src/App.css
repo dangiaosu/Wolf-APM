@@ -1,0 +1,240 @@
+/* Bọc toàn bộ bảng trong div có thể cuộn ngang khi màn hình quá nhỏ */
+.profile-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  box-sizing: border-box;
+  padding: 0;
+  display: flex;
+  justify-content: center; /* Đảm bảo bảng được căn giữa nếu nhỏ hơn màn hình */
+}
+
+/* Đặt form vào giữa */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  margin: auto;
+  width: 100%;
+  max-width: 1200px;
+  box-sizing: border-box;
+}
+
+/* Wrapper tổng quát */
+.profile-form-wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Cập nhật để phù hợp với các màn hình nhỏ hơn */
+  gap: 10px; /* Giảm khoảng cách giữa các cột */
+  width: 100%;
+  max-width: 1200px; /* Giới hạn chiều rộng form */
+  margin: 0 auto; /* Căn giữa form */
+  justify-content: center; /* Căn giữa toàn bộ khối */
+  box-sizing: border-box;
+}
+
+/* Căn giữa nội dung của từng cột */
+.column-1, .column-2, .column-3 {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Căn giữa các input và button theo chiều ngang */
+  gap: 10px; /* Khoảng cách giữa các phần tử trong từng cột */
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Các input field */
+input[type="text"],
+input[type="password"] {
+  width: 100%; /* Giảm chiều rộng của input để phù hợp với container */
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  text-align: left; /* Căn trái nội dung trong input */
+}
+
+input::placeholder {
+  color: #999;
+}
+
+/* Nút Add Profile */
+.add-profile-button {
+  padding: 8px 16px; /* Giảm kích thước padding của nút */
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px; /* Giảm kích thước font */
+  font-weight: bold;
+  text-align: center;
+  transition: background-color 0.3s ease;
+  width: 100%; /* Đảm bảo nút chiếm toàn bộ chiều rộng trên màn hình nhỏ */
+  max-width: 200px; /* Giới hạn chiều rộng tối đa */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Shadow nhẹ */
+}
+
+/* Hiệu ứng khi hover */
+.add-profile-button:hover {
+  background-color: #0056b3;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Bảng profile */
+.profile-table {
+  margin-top: 20px;
+  border-collapse: collapse;
+  width: 100%;
+  max-width: 100%;
+  background-color: #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+  word-wrap: break-word;
+  table-layout: auto; /* Cố định kích thước các cột để bảng dễ điều chỉnh hơn */
+}
+
+/* Các ô trong bảng */
+.profile-table th, .profile-table td {
+  padding: 8px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+  font-size: 12px;
+  overflow-wrap: anywhere;
+  white-space: nowrap;
+}
+
+/* Cột tickbox */
+.profile-table th:nth-child(1), .profile-table td:nth-child(1) {
+  width: 5%; /* Giảm chiều rộng để phù hợp với checkbox */
+}
+
+/* Cột số thứ tự (#) */
+.profile-table th:nth-child(2), .profile-table td:nth-child(2) {
+  width: 5%; /* Chiều rộng vừa đủ cho số thứ tự tối đa 3 chữ số */
+}
+
+/* Cột Sim Card */
+.profile-table th:nth-child(12), .profile-table td:nth-child(12) {
+  width: 5%; /* Chiều rộng vừa đủ cho giá trị Yes/No */
+}
+
+/* Header của bảng */
+.profile-table th {
+  background-color: #007bff;
+  color: #fff;
+  font-weight: bold;
+  min-width: 50px;
+}
+
+/* Đặt chiều rộng cố định cho các nút */
+.profile-table button {
+  min-width: 50px;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Hàng trong bảng */
+.profile-table tr {
+  transition: background-color 0.3s ease;
+}
+
+/* Hiệu ứng hover cho hàng */
+.profile-table tr:hover {
+  background-color: #f1f1f1; /* Khi hover vào hàng, nền đổi màu nhẹ */
+}
+
+/* Button trong bảng */
+button {
+  padding: 6px 10px; /* Giảm kích thước padding cho nút */
+  font-size: 12px; /* Giảm kích thước font */
+  font-weight: bold;
+  border-radius: 6px; /* Góc bo cho nút */
+  border: none;
+  cursor: pointer;
+  color: white;
+  background-color: #007bff;
+  transition: background-color 0.3s ease;
+  margin-right: 5px; /* Giảm khoảng cách giữa các nút */
+}
+
+button:hover {
+  background-color: #0056b3; /* Khi hover, nền của nút đổi màu */
+}
+
+/* Button Delete và Backup */
+button.delete {
+  background-color: #dc3545; /* Màu đỏ cho nút delete */
+}
+
+button.delete:hover {
+  background-color: #c82333; /* Đổi màu khi hover nút delete */
+}
+
+button.backup {
+  background-color: #28a745; /* Màu xanh lá cho nút backup */
+}
+
+button.backup:hover {
+  background-color: #218838; /* Đổi màu khi hover nút backup */
+}
+
+button.update {
+  background-color: #6a329f;
+}
+
+button.cancel {
+  background-color: #bcbcbc;
+}
+
+/* Đặc biệt cho Show EVM Key và TON Key */
+.show-key-button {
+  display: block;
+  width: 100%;
+  text-align: center;
+  white-space: nowrap; /* Tránh xuống dòng */
+}
+
+.copy-key-button {
+  margin-top: 10px;
+}
+
+/* Responsive - điều chỉnh padding và font-size khi màn hình nhỏ */
+@media only screen and (max-width: 768px) {
+  .profile-table th:nth-child(3),
+  .profile-table td:nth-child(3),
+  .profile-table th:nth-child(4),
+  .profile-table td:nth-child(4) {
+    display: none; /* Ẩn cột ít quan trọng trên màn hình nhỏ để tránh tràn */
+  }
+  .profile-table th, .profile-table td {
+    padding: 6px;
+    font-size: 10px;
+  }
+
+  .profile-table button {
+    min-width: 50px;
+    font-size: 10px;
+  }
+
+  .profile-table-wrapper {
+    overflow-x: auto; /* Luôn cho phép cuộn ngang khi bảng quá rộng */
+    padding: 0 5px;
+  }
+
+  .container {
+    padding: 10px;
+  }
+
+  .profile-form-wrapper {
+    grid-template-columns: repeat(1, 1fr); /* Chuyển về 1 cột khi màn hình quá nhỏ */
+    width: 100%;
+  }
+
+  .add-profile-button {
+    width: 100%; /* Đảm bảo nút Add Profile chiếm toàn bộ chiều rộng trên màn hình nhỏ */
+  }
+}

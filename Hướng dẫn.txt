@@ -1,0 +1,7 @@
+Chạy 3 lần file start.bat
+
+Chạy lần đầu : Tạo file .env gồm port của backend và tên DB ( Database ). Cài thư viện cho backend.
+Chạy lần 2 : Cài thư viện cho frontend. Tắt cửa sổ đang bật đi.
+Chạy lần 3 : Khởi chạy.
+
+Từ các lần sau, mỗi khi muốn truy cập hãy chạy start.bat, có thể tạo shortcut ra ngoài desktop và gán phím tắt để mở. Nó sẽ mở ra trang truy cập cơ sở dữ liệu tại http://localhost:3000
